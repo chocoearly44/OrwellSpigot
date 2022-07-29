@@ -1,0 +1,17 @@
+name: Orwell
+version: '${project.version}'
+main: tk.thesuperlab.orwell.Main
+api-version: 1.19
+load: STARTUP
+authors: [ chocoearly44 ]
+description: Spigot chat proxy plugin.
+website: https://github.com/chocoearly44/OrwellSpigot
+commands:
+  mute:
+    description: Mute or unmute player
+    usage: /mute <player>
+    permission: orwell.admin.mute
+  ignore:
+    description: Ignore player messages
+    usage: /ignore <player>
+    permission: orwell.ignore
