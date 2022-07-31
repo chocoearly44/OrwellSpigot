@@ -14,18 +14,14 @@ public class ChatListener implements Listener {
 		event.setCancelled(true);
 
 		Player sender = event.getPlayer();
-
 		if(MuteService.isPlayerMuted(sender)) {
 			sender.sendMessage(ChatColor.RED + "You are muted");
 			return;
 		}
 
+		String message = sender.getDisplayName() + " » " + event.getMessage();
 		event.getRecipients().stream()
 				.filter(player -> !IgnoreService.isPlayerIgnored(player, sender))
-				.forEach(player -> player.sendMessage(event.getPlayer()
-						.getDisplayName() +
-						" » " +
-						event.getMessage()
-				));
+				.forEach(player -> player.sendMessage(message));
 	}
 }
