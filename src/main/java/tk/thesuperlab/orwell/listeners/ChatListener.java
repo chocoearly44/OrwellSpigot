@@ -20,7 +20,7 @@ public class ChatListener implements Listener {
 			return;
 		}
 
-		event.getPlayer().getWorld().getPlayers().stream()
+		event.getRecipients().stream()
 				.filter(player -> !IgnoreService.isPlayerIgnored(player, sender))
 				.forEach(player -> player.sendMessage(event.getPlayer()
 						.getDisplayName() +
