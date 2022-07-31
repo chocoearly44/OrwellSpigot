@@ -9,9 +9,9 @@ import tk.thesuperlab.orwell.services.IgnoreService;
 
 public class IgnoreCommand implements CommandExecutor {
 	@Override
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if(!(sender instanceof Player)) {
-			sender.sendMessage("Command must be used by a player.");
+	public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+		if(!(commandSender instanceof Player)) {
+			commandSender.sendMessage("Command must be used by a player.");
 			return false;
 		}
 
@@ -24,14 +24,14 @@ public class IgnoreCommand implements CommandExecutor {
 			return false;
 		}
 
-		Player player = (Player) sender;
+		Player sender = (Player) commandSender;
 
-		if(IgnoreService.isPlayerIgnored(player, ignore)) {
-			IgnoreService.unignorePlayer(player, ignore);
-			sender.sendMessage("Player " + player.getDisplayName() + " unignored.");
+		if(IgnoreService.isPlayerIgnored(sender, ignore)) {
+			IgnoreService.unignorePlayer(sender, ignore);
+			commandSender.sendMessage("Player " + ignore.getDisplayName() + " unignored.");
 		} else {
-			IgnoreService.ignorePlayer(player, ignore);
-			sender.sendMessage("Player " + player.getDisplayName() + " ignored.");
+			IgnoreService.ignorePlayer(sender, ignore);
+			commandSender.sendMessage("Player " + ignore.getDisplayName() + " ignored.");
 		}
 
 		return true;

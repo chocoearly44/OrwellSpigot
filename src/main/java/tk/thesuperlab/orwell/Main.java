@@ -4,6 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import tk.thesuperlab.orwell.commands.IgnoreCommand;
 import tk.thesuperlab.orwell.commands.MuteCommand;
+import tk.thesuperlab.orwell.commands.SayCommand;
+import tk.thesuperlab.orwell.commands.WhisperCommand;
 import tk.thesuperlab.orwell.listeners.ChatListener;
 
 import java.util.logging.Logger;
@@ -21,6 +23,8 @@ public final class Main extends JavaPlugin {
 		// Setup commands
 		this.getCommand("mute").setExecutor(new MuteCommand());
 		this.getCommand("ignore").setExecutor(new IgnoreCommand());
+		this.getCommand("whisper").setExecutor(new WhisperCommand());
+		this.getCommand("say").setExecutor(new SayCommand());
 	}
 
 	@Override

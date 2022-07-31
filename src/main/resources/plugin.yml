@@ -15,3 +15,16 @@ commands:
     description: Ignore player messages
     usage: /ignore <player>
     permission: orwell.ignore
+  whisper:
+    description: Whisper a message to a player
+    usage: /whisper <player> <message>
+    permission: orwell.whisper
+    aliases:
+      - w
+      - msg
+      - message
+      - tell
+  say:
+    description: Say something.
+    usage: /say <message>
+    permission: orwell.say
