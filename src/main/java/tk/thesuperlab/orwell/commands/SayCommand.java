@@ -5,10 +5,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import tk.thesuperlab.orwell.services.IgnoreService;
 import tk.thesuperlab.orwell.services.MuteService;
-import tk.thesuperlab.orwell.services.SayService;
-
-import java.util.ArrayList;
 
 public class SayCommand implements CommandExecutor {
 	@Override
@@ -23,17 +21,16 @@ public class SayCommand implements CommandExecutor {
 			return true;
 		}
 
-		StringBuilder message = new StringBuilder();
+		StringBuilder rawMessage = new StringBuilder();
 		for(String str : args) {
-			message.append(str);
-			message.append(' ');
+			rawMessage.append(str);
+			rawMessage.append(' ');
 		}
 
-		SayService.sayMessage(
-				sender,
-				new ArrayList<>(commandSender.getServer().getOnlinePlayers()),
-				message.toString()
-		);
+		String message = "[" + sender.getDisplayName() + "] " + rawMessage;
+		commandSender.getServer().getOnlinePlayers().stream()
+				.filter(player -> !IgnoreService.isPlayerIgnored(player, sender))
+				.forEach(player -> player.sendMessage(message));
 
 		return true;
 	}
