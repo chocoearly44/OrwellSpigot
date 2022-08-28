@@ -16,6 +16,8 @@
 
 </div>
 
+## This project is now archived. Click [here](https://github.com/Oharass/FreedomChat) if you're looking for an alternative.
+
 ## Installation
 1. Download and setup [Spigot Server](https://www.spigotmc.org)
 2. Put the [latest version][releases-url] of OrwellSpigot into the `plugins` folder
